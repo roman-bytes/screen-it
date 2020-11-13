@@ -3,7 +3,7 @@ import { useStateValue } from '../state';
 import Movie from './Movie';
 
 const MovieList = () => {
-    const [{ movies }] = useStateValue();
+    const [{ movies }]: {} = useStateValue();
 
     const renderMovies = movies.map((movie) => (
         <Movie key={movie.name} movie={movie} />

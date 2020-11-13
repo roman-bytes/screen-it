@@ -8,7 +8,7 @@ const AddMovie = () => {
     const inputEl = useRef(null);
     const selectEl = useRef(null);
     const ratingEl = useRef(null);
-    const [{ movies }, dispatch] = useStateValue();
+    const [{}, dispatch] = useStateValue();
 
     return (
         <div className="px-2 md:px-4 max-w-2xl mx-auto flex flex-col">
@@ -24,7 +24,16 @@ const AddMovie = () => {
             <label className="flex flex-row justify-between items-center text-2xl text-semibold my-2">
                 Category
                 <Select
-                    options={['Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller']}
+                    options={[
+                        'Action',
+                        'Comedy',
+                        'Drama',
+                        'Fantasy',
+                        'Horror',
+                        'Mystery',
+                        'Romance',
+                        'Thriller',
+                    ]}
                     ref={selectEl}
                 />
             </label>
@@ -34,15 +43,18 @@ const AddMovie = () => {
             </label>
             <Button
                 onClick={() => {
-                    console.log('inputEl', inputEl);
-                    console.log('selectEl', selectEl);
-                    console.log('ratingEl', ratingEl);
+                    const movieName =
+                        inputEl && inputEl.current && inputEl.current.value;
+                    const categoryValue =
+                        selectEl && selectEl.current && selectEl.current.value;
+                    const ratingValue =
+                        ratingEl && ratingEl.current && ratingEl.current.value;
                     dispatch({
                         type: 'addMovie',
                         movie: {
-                            name: inputEl.current.value,
-                            category: selectEl.current.value,
-                            rating: ratingEl.current.value,
+                            name: movieName,
+                            category: categoryValue,
+                            rating: ratingValue,
                         },
                     });
                 }}

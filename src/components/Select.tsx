@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Select = React.forwardRef(({ options }, ref) => {
+interface SelectProps {
+    options: string[];
+};
+
+const Select = React.forwardRef(({ options }: SelectProps, ref) => {
     const renderOptions = options.map((option) => (
         <option key={option} value={option}>
             {option}
@@ -31,5 +35,7 @@ const Select = React.forwardRef(({ options }, ref) => {
         </div>
     );
 });
+
+Select.displayName = 'Select';
 
 export default Select;

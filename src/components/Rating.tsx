@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 
-const Rating = React.forwardRef(({ stars }, ref) => {
+interface RatingProps {
+    stars: number;
+}
+
+const Rating = React.forwardRef(({ stars }: RatingProps, ref) => {
     const [rating, setRating] = useState(stars);
 
     const updateRating = (rating) => {
         setRating(rating + 1);
     };
 
+    // eslint-disable-next-line prefer-spread
     const renderStars = Array.apply(null, { length: 5 }).map((e, i) => {
         const color = rating > i ? 'text-yellow-500' : 'text-gray-400';
 
@@ -33,5 +38,7 @@ const Rating = React.forwardRef(({ stars }, ref) => {
         </div>
     );
 });
+
+Rating.displayName = 'Rating';
 
 export default Rating;
