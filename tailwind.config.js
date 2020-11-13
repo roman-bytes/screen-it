@@ -4,12 +4,21 @@ module.exports = {
             sourceSans: ['Source\\ Sans \\Pro'],
         },
         extend: {
+            width: {
+                buttonWidth: '560px',
+            },
             fontSize: {
                 heading40: '2.5rem',
             },
             colors: {
                 lightBlue: '#94BFFF',
                 darkBlue: '#61A0FF',
+                grey: '#CCCCCC',
+                lineColor: '#EEEEEE',
+                textLight: '#AAAAAA',
+            },
+            inset: {
+                '100': '100%',
             },
         },
     },

@@ -1,37 +1,51 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Button from './button';
 import Rating from './Rating';
-import Select from './Select';
 import { useStateValue } from '../state';
+import Select from './Select';
 
 const AddMovie = () => {
-    const [{ theme }, dispatch] = useStateValue();
+    const inputEl = useRef(null);
+    const selectEl = useRef(null);
+    const ratingEl = useRef(null);
+    const [{ movies }, dispatch] = useStateValue();
 
     return (
-        <div className="container mx-auto">
-            <label>
+        <div className="px-2 md:px-4 max-w-2xl mx-auto flex flex-col">
+            <label className="flex flex-row justify-between items-center text-2xl text-semibold my-2">
                 Name
-                <input type="text" placeholder="Name of the movie" />
+                <input
+                    type="text"
+                    ref={inputEl}
+                    placeholder="Name of the movie"
+                    className="my-2 bg-white p-1 flex border border-gray-200 rounded w-2/3"
+                />
             </label>
-            <label>
+            <label className="flex flex-row justify-between items-center text-2xl text-semibold my-2">
                 Category
-                <Select />
+                <Select
+                    options={['Action', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Romance', 'Thriller']}
+                    ref={selectEl}
+                />
             </label>
-            <label>
-                Rating
-                <Rating />
+            <label className="flex flex-row justify-between items-center text-2xl text-semibold my-2">
+                <span>Rating</span>
+                <Rating stars={0} ref={ratingEl} />
             </label>
             <Button
-                onClick={() =>
+                onClick={() => {
+                    console.log('inputEl', inputEl);
+                    console.log('selectEl', selectEl);
+                    console.log('ratingEl', ratingEl);
                     dispatch({
                         type: 'addMovie',
                         movie: {
-                            name: 'Star Wars',
-                            category: 'Sci-Fi',
-                            Rating: 5,
+                            name: inputEl.current.value,
+                            category: selectEl.current.value,
+                            rating: ratingEl.current.value,
                         },
-                    })
-                }
+                    });
+                }}
             >
                 Add Movie
             </Button>

@@ -54,7 +54,7 @@ const Layout: FunctionComponent<LayoutProps> = ({
             <div>
                 <Header siteTitle={data.site.siteMetadata.title} />
                 <AddMovie />
-                <div className="container mx-auto max-w-4xl pt-0 px-4 pb-6">
+                <div className="max-w-2xl mx-auto pt-0 px-4 pb-6">
                     <main>{children}</main>
                 </div>
             </div>
