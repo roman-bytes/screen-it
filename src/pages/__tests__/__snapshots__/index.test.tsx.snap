@@ -94,12 +94,6 @@ Array [
           />
         </div>
       </div>
-      <a
-        className="underline text-blue-500"
-        href="/page-2/"
-      >
-        Go to page 2
-      </a>
     </main>
     <footer>
       © 

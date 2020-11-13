@@ -1,6 +1,17 @@
 module.exports = {
     theme: {
-        extend: {},
+        fontFamily: {
+            sourceSans: ['Source\\ Sans \\Pro'],
+        },
+        extend: {
+            fontSize: {
+                heading40: '2.5rem',
+            },
+            colors: {
+                lightBlue: '#94BFFF',
+                darkBlue: '#61A0FF',
+            },
+        },
     },
     variants: {},
     plugins: [],

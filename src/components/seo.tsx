@@ -48,6 +48,9 @@ const SEO: FunctionComponent<SeoProps> = ({
             htmlAttributes={{
                 lang,
             }}
+            bodyAttributes={{
+                class: 'font-sourceSans',
+            }}
             title={title}
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[

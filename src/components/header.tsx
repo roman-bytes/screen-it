@@ -1,7 +1,8 @@
-import { Link } from 'gatsby';
 import React from 'react';
 import { FunctionComponent } from 'react';
 import { ReactElement } from 'react';
+import Button from './button';
+import AddIcon from './addIcon';
 
 interface HeaderProps {
     siteTitle: string;
@@ -10,13 +11,13 @@ interface HeaderProps {
 const Header: FunctionComponent<HeaderProps> = ({
     siteTitle,
 }: HeaderProps): ReactElement => (
-    <header className="bg-purple-800 mb-6">
-        <div className="mx-auto max-w-4xl py-6 px-4">
-            <h1 className="text-4xl">
-                <Link to="/" className="text-white">
-                    {siteTitle}
-                </Link>
-            </h1>
+    <header className="border-b mb-6">
+        <div className="mx-auto container py-6 px-4 flex justify-between items-center">
+            <h1 className="font-bold text-heading40">Screen It</h1>
+            <Button>
+                <AddIcon />
+                {'Add movie'}
+            </Button>
         </div>
     </header>
 );

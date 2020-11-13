@@ -10,9 +10,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { FunctionComponent } from 'react';
 import { ReactElement } from 'react';
 import { ReactNode } from 'react';
+import { StateProvider } from '../state';
 
 import Header from './header';
 import './main.css';
+import AddMovie from './addMovie';
 
 interface LayoutProps {
     children: ReactNode;
@@ -31,23 +33,32 @@ const Layout: FunctionComponent<LayoutProps> = ({
         }
     `);
 
+    const initialState = {
+        movies: [],
+    };
+
+    const reducer = (state, action) => {
+        switch (action.type) {
+            case 'addMovie':
+                return {
+                    movies: [...state.movies, action.movie],
+                };
+
+            default:
+                return state;
+        }
+    };
+
     return (
-        <>
-            <Header siteTitle={data.site.siteMetadata.title} />
-            <div className="mx-auto max-w-4xl pt-0 px-4 pb-6">
-                <main>{children}</main>
-                <footer>
-                    © {new Date().getFullYear()}, Built with
-                    {` `}
-                    <a
-                        className="underline text-blue-500"
-                        href="https://www.gatsbyjs.org"
-                    >
-                        Gatsby
-                    </a>
-                </footer>
+        <StateProvider initialState={initialState} reducer={reducer}>
+            <div>
+                <Header siteTitle={data.site.siteMetadata.title} />
+                <AddMovie />
+                <div className="container mx-auto max-w-4xl pt-0 px-4 pb-6">
+                    <main>{children}</main>
+                </div>
             </div>
-        </>
+        </StateProvider>
     );
 };
 
