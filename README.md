@@ -1,11 +1,7 @@
-# Pillar
+# Screen it
 
-Pillar is a starter kit for Gatsby that comes with the following.
+Very simple app build with Gatsby, Tailwind and Typescript that allows you to keep track of movies you have watched.
 
--   Typescript
--   TailwindCSS
--   React Testing Library
--   Jest
--   PostCSS
--   ESLint
--   Prettier
+To get started just run:
+1. `npm i`
+2. `npm run develop`
